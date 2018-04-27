@@ -1,0 +1,96 @@
+ - name: JMMS_APP
+   ver: '1.0'
+   scope: JMMS_APP
+   lang: xml
+   groups:
+   - name: Common
+     desc: 通用
+     snippets:
+
+     - name: bui-scss
+       displayName: scss
+       code: |
+        <style lang="sass" src="bui-weex/src/css/buiweex.scss"></style>
+       desc:
+
+     - name: bui-button
+       displayName: button
+       code: |
+        <bui-button type="${1:primary}" value="${2:Button}" @click="${3}"></bui-button>
+       desc:
+
+     - name: bui-tip
+       displayName: tip
+       code: |
+        <bui-tip type="${1:info}" value="${2:text}"></bui-tip>
+       desc:
+
+     - name: bui-list
+       displayName: list
+       code: |
+        <list class="bui-list">
+            <cell class="bui-cell" v-for="${1}" >
+                <div class="bui-list-main">
+                    <text class="bui-list-title">${2:普通文本}</text>
+                </div>
+                <div class="bui-list-right">
+                    <bui-icon name="icon-go"></bui-icon>
+                </div>
+            </cell>
+        </list>
+       desc:
+
+     - name: bui-list-lr
+       displayName: list-lr
+       code: |
+        <list class="bui-list">
+            <cell class="bui-cell-large" v-for="${1}">
+                <div class="bui-list-left">
+                    <bui-image class="bui-list-thumb" radius="50px" v-bind:src="${2}"></bui-image>
+                </div>
+                <div class="bui-list-main">
+                    <text class="bui-list-title">${3:普通标题}</text>
+                    <text class="bui-list-subtitle">${4:普通文本}</text>
+                </div>
+                <div class="bui-list-right">
+                        <bui-icon name="icon-go"></bui-icon>
+                </div>
+            </cell>
+        </list>
+       desc:
+
+     - name: bui-header
+       displayName: header
+       code: |
+        <bui-header title="${1:标题栏11}" :leftItem="${2:leftItem}" :rightItem="${3:rightItem}" @leftClick="${4}" @rightClick="${5}" @centerClick="${6}"></bui-header>
+       desc:
+
+     - name: bui-text.h1
+       displayName: text.h1
+       code: |
+        <text class="h1">${1}</text>
+       desc:
+
+     - name: bui-text.h2
+       displayName: text.h2
+       code: |
+        <text class="h2">${1}</text>
+       desc:
+
+     - name: bui-text.h3
+       displayName: text.h3
+       code: |
+        <text class="h3">${1}</text>
+       desc:
+
+     - name: bui-text.h4
+       displayName: text.h4
+       code: |
+        <text class="h4">${1}</text>
+       desc:
+
+     - name: bui-text.h5
+       displayName: text.h5
+       code: |
+        <text class="h5">${1}</text>
+       desc:
