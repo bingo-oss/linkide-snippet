@@ -1,0 +1,1 @@
+# LinkIDE Snippet
