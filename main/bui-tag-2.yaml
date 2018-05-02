@@ -1,0 +1,20 @@
+ - name: JMMS_APP
+   ver: '2.0'
+   scope: JMMS_APP
+   lang: xml
+   groups:
+   - name: Common
+     desc: 通用
+     snippets:
+
+     - name: bui-scss
+       displayName: scss
+       code: |
+        <style lang="sass" src="bui-weex/src/css/buiweex.scss"></style>
+       desc:
+
+     - name: bui-button12
+       displayName: button
+       code: |
+        <bui-button type="${1:primary}" value="${2:Button}" @click="${3}"></bui-button>
+       desc:

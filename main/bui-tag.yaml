@@ -1,5 +1,5 @@
  - name: JMMS_APP
-   ver: '1.0'
+   ver: '1.1'
    scope: JMMS_APP
    lang: xml
    groups:
