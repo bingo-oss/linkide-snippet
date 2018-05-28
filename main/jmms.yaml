@@ -205,7 +205,7 @@
         dao.executeUpdate(sql[,params]);
      
      - name: http
-       displayName:网络请求模块
+       displayName: 网络请求模块
        desc: 提供基础的HTTP远程调用接口
        code: |
         const http = require('http');
