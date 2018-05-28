@@ -1,0 +1,247 @@
+ - name: JMMS_APP
+   ver: '0.4.x'
+   scope: JMMS_APP
+   lang: javascript
+   groups:
+
+   - name: 全局对象
+     desc: 
+     snippets:
+
+     - name: console.info
+       displayName: console
+       desc: 浏览器中console对象的基础方法,debug,error,info,log,warn。
+       code: |
+        console.info(message);
+
+     - name: log.info
+       displayName: log
+       desc: 用于打印日志信息,debug,error,info,log,warn,支持占位符。
+       code: |
+        log.info('log message:{}','jmms');
+
+     - name: $config
+       displayName: $config
+       desc: 是一个Javascript Object，对象中包含了所有的配置属性,例如返回config.json的配置对象。
+       code: |
+        $config.db.file;
+
+     - name: $params
+       displayName: $params
+       desc: 是一个Javascript Object，属性包含了所有API操作定义的输入参数。
+       code: |
+        $params.name;
+
+     - name: $user
+       displayName: $user
+       desc: 表示访问微服务的当前用户，匿名访问也可以获取到这个对象，<br/>包含id,name,loginName,anonymous等属性。
+       code: |
+
+     - name: $user.id
+       displayName: $user.id
+       display: false
+       code: |
+        //用户的ID
+        $user.id;
+
+     - name: $user.name
+       displayName: $user.name
+       display: false
+       code: |
+        //用户的姓名
+        $user.name;
+
+     - name: $user.loginName
+       displayName: $user.loginName
+       display: false
+       code: |
+        //用户登录名
+        $user.loginName; 
+
+     - name: $user.anonymous
+       displayName: $user.anonymous
+       display: false
+       code: |
+        //是否匿名访问
+        $user.anonymous; 
+
+     - name: $client
+       displayName: $client
+       desc: 表示访问微服务的当前客户端（应用或者其他服务）<br/>匿名访问也可以获取到这个对象,包含id,anonymous等属性。
+       code: |
+
+     - name: $client.id
+       displayName: $client.id
+       display: false
+       code: |
+        //Client的ID，匿名访问返回空字符串
+        $client.id
+
+     - name: $client.anonymous
+       displayName: $client.anonymous
+       display: false
+       code: |
+        //是否匿名访问
+        $client.anonymous
+
+     - name: Response
+       displayName: Response
+       desc: 用于API操作函数返回HTTP状态码以及响应数据,别名是 R<br/>包含of,ok,created,accepted,noContent,badRequest,notFound,notImplemented,<br/>err,setHeader等方法。
+       code: |
+
+     - name: Response.of
+       displayName: Response.of
+       display: false
+       code: |
+        //HTTP状态码：如果data存在返回200，不存在返回204
+        Response.of([data])
+
+     - name: Response.ok 
+       displayName: Response.ok
+       display: false
+       code: |
+        //HTTP状态码：200
+        Response.ok([data]);
+
+     - name: Response.created
+       displayName: Response.created
+       display: false
+       code: |
+        //HTTP状态码：201
+        Response.created([data]);
+
+     - name: Response.accepted
+       displayName: Response.accepted
+       display: false
+       code: |
+        //HTTP状态码：202
+        Response.accepted([data]);
+
+     - name: Response.noContent
+       displayName: Response.noContent
+       display: false
+       code: |
+        //HTTP状态码：204
+        Response.noContent();
+
+     - name: Response.badRequest
+       displayName: Response.badRequest
+       display: false
+       code: |
+        //HTTP状态码：400，自定义errCode（非http状态码)
+        Response.badRequest(errCode, message);
+
+     - name: Response.notFound
+       displayName: Response.notFound
+       display: false
+       code: |
+        //HTTP状态码：404，自定义errCode（非http状态码)
+        Response.notFound(errCode, message);
+
+     - name: Response.notImplemented
+       displayName: Response.notImplemented
+       display: false
+       code: |
+        //HTTP状态码：501
+        Response.notImplemented([message]);
+
+     - name: Response.err
+       displayName: Response.err
+       display: false
+       code: |
+        //HTTP状态码：500，自定义errCode（非http状态码)
+        Response.err(errCode, message);
+
+     - name: Response.setHeader
+       displayName: Response.setHeader
+       display: false
+       code: |
+        //设置HTTP响应Header
+        Response.setHeader(name, value);
+
+   - name: 基础模块
+     desc: 
+     snippets:
+     - name: utils
+       displayName: 工具类模块
+       desc: 提供了常用工具类方法<br/>json、arrayToList、mapToArray等。
+       code: |
+        const utils = require('utils');
+
+     - name: utils.json 对象转字符串
+       display: false
+       code: |
+        utils.json(value);
+
+     - name: utils.arrayToList 对象数组转List
+       display: false
+       code: |
+        utils.arrayToList(objectArray);
+
+     - name: utils.mapToArray 对象数组提取某个属性返回Array
+       display: false
+       code: |
+        utils.mapToArray(objectArray,key);
+
+     - name: dao
+       displayName: 数据访问模块
+       desc: 提供最基础的数据访问接口
+       code: |
+        const dao = require('dao');
+
+     - name: dao.entity 返回指定实体
+       display: false
+       code: |
+        dao.entity(name);
+
+     - name: dao.exec 执行更新数据的SQL
+       display: false
+       code: |
+        dao.exec(sql[,params]);
+
+     - name: dao.executeUpdate 类似{Entity}.exec
+       display: false
+       code: |
+        dao.executeUpdate(sql[,params]);
+     
+     - name: http
+       displayName:网络请求模块
+       desc: 提供基础的HTTP远程调用接口
+       code: |
+        const http = require('http');
+
+     - name: http.client 返回底层的HttpClient对象
+       display: false
+       code: |
+        http.client
+
+     - name: http.request(url[,path])创建请求对象HttpRequest
+       display: false
+       code: |
+        http.request(url[,path]);
+     
+     - name: http.get 发送GET请求
+       display: false
+       code: |
+        const http = require('http');
+        const res = http.request("http://www.example.com?param=value").get();
+        if(res.success){
+          const value = res.json();
+          //todo
+        }else{
+          //todo
+        }
+     
+     - name: http.post 发送POST请求
+       display: false
+       code: |
+         const http = require('http');
+         const params = {key: 'hello'};
+         const res = http.request('http://www.example.com').json(params).post();
+         if(res.success){
+           const value = res.json();
+           //todo
+         }else{
+           //todo
+         }
+     
