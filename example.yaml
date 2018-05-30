@@ -4,17 +4,19 @@
  - name: 此处为代码片段模块名称
    ver: '此处为代码片段模板版本号，如果为纯数字最好用单引号括起来，避免在解析时 1.0 这样的版本号被解析为 1 '
    scope: 此处的值用于自动为 IDE 中对应类型工程选择代码片段，目前可选枚举值为：BT_APP，JMMS_APP，META_APP，WEEX_APP
-   lang: 此处填写代码片段所用的编程语言，目前主要用于代码高亮渲染，可选值为：java, javascript, xml, html, css
+   lang: 此处填写代码片段所用的编程语言，目前主要用于ACE编辑器区分snippet类型和代码高亮渲染，可选值为：java, javascript, json, sql, xml, html, css
    groups:
 
    # 这一层级为 group 分组，一个 module 可以包含多个 group
    - name: 此处为分组名称
      desc: 此处为分组描述
+     lang: 此处的 lang 会覆盖上层的 lang，可为空
      snippets:
 
      # 这一层级为 snippet 代码片段，一个 group 可以包含多个 snippet
      - name: 此处为代码片段名称，也是用户在 IDE 中输入时的 trigger，因此尽量使用英文便于用户触发代码提示
        displayName: 此处为代码片段显示名称，可以使用中文，建议字数在8个以内
+       lang: 此处的 lang 会覆盖上层的 lang，可为空
        code: |
         此处为实际代码片段内容，
         根据 YAML 的语法，
