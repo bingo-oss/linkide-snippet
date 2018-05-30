@@ -1,5 +1,5 @@
  - name: JMMS_APP
-   ver: '0.4.x'
+   ver: '0.4.311'
    scope: JMMS_APP
    lang: javascript
    groups:
@@ -10,31 +10,31 @@
 
      - name: console.info
        displayName: console
-       desc: 浏览器中console对象的基础方法,debug,error,info,log,warn。
+       desc: 浏览器中console对象的基础方法,支持debug,error,info,log,warn。
        code: |
         console.info(message);
 
      - name: log.info
        displayName: log
-       desc: 用于打印日志信息,debug,error,info,log,warn,支持占位符。
+       desc: 用于打印日志信息,支持debug,error,info,log,warn,支持占位符。
        code: |
         log.info('log message:{}','jmms');
 
      - name: $config
        displayName: $config
-       desc: 是一个Javascript Object，对象中包含了所有的配置属性,例如返回config.json的配置对象。
+       desc: 包含了所有的配置属性,例如返回config.json的配置对象。
        code: |
-        $config.db.file;
+        \$config.db.file;
 
      - name: $params
        displayName: $params
-       desc: 是一个Javascript Object，属性包含了所有API操作定义的输入参数。
+       desc: 包含了所有API操作定义的输入参数。
        code: |
-        $params.name;
+        \$params.name;
 
      - name: $user
        displayName: $user
-       desc: 表示访问微服务的当前用户，匿名访问也可以获取到这个对象，<br/>包含id,name,loginName,anonymous等属性。
+       desc: 访问微服务的当前用户，匿名访问也可以获取到这个对象，<br/>包含id,name,loginName,anonymous等属性。
        code: |
 
      - name: $user.id
@@ -42,28 +42,28 @@
        display: false
        code: |
         //用户的ID
-        $user.id;
+        \$user.id;
 
      - name: $user.name
        displayName: $user.name
        display: false
        code: |
         //用户的姓名
-        $user.name;
+        \$user.name;
 
      - name: $user.loginName
        displayName: $user.loginName
        display: false
        code: |
         //用户登录名
-        $user.loginName; 
+        \$user.loginName; 
 
      - name: $user.anonymous
        displayName: $user.anonymous
        display: false
        code: |
         //是否匿名访问
-        $user.anonymous; 
+        \$user.anonymous; 
 
      - name: $client
        displayName: $client
@@ -75,14 +75,14 @@
        display: false
        code: |
         //Client的ID，匿名访问返回空字符串
-        $client.id
+        \$client.id
 
      - name: $client.anonymous
        displayName: $client.anonymous
        display: false
        code: |
         //是否匿名访问
-        $client.anonymous
+        \$client.anonymous
 
      - name: Response
        displayName: Response

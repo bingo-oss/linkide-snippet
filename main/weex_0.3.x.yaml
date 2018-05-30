@@ -1,0 +1,423 @@
+ - name: WEEX_APP
+   ver: '0.3.x'
+   scope: WEEX_APP
+   lang: javascript
+   groups:
+
+   - name: 全局函数
+     desc: 
+     snippets:
+
+     - name: this.$toast
+       displayName: this.$toast
+       desc: 弹出吐司提示信息
+       code: |
+        this.\$toast("msg");
+
+     - name: this.$alert
+       displayName: this.$alert
+       desc: 弹出提示窗口
+       code: |
+        this.\$alert("msg",()=>{ 
+
+        });
+
+     - name: this.$confirm
+       displayName: this.$confirm
+       desc: 弹出确认框
+       code: |
+        this.\$confirm("msg",(e)=>{ 
+          
+        });
+     - name: this.$getContextPath
+       displayName: this.$getContextPath
+       desc: 获取当前上下文路径
+       code: |
+        this.\$getContextPath();
+
+     - name: this.$push
+       displayName: this.$push
+       desc: 加载一个新的页面(bundleJS)
+       code: |
+        this.\$push(this.\$getContextPath+"/app.weex.js",{});
+
+     - name: this.$pop
+       displayName: this.$pop
+       desc: 弹出当前页面
+       code: |
+         this.\$pop();
+
+     - name: this.$getPageParams
+       displayName: this.$getPageParams
+       desc: 获取页面参数(bundleJS),从url查询参数中获取
+       code: |
+         this.\$getPageParams();
+
+     - name: this.$get
+       displayName: this.$get
+       desc: 发送GET请求
+       code: |
+         this.\$get({
+           url:"",
+           data:{},
+           headers:{}
+         }).then((data,code,statusText)=>{
+
+         }).catch((code,statusText)=>{
+
+         });
+
+     - name: this.$post
+       displayName: this.$post
+       desc: 发送POST请求
+       code: |
+         this.\$post({
+           url:"",
+           data:{},
+           headers:{}
+         }).then((data,code,statusText)=>{
+
+         }).catch((code,statusText)=>{
+           
+         });
+
+     - name: this.$isIPhoneX
+       displayName: this.$isIPhoneX
+       desc: 判断是否是 iphone x
+       code: |
+         this.\$isIPhoneX()
+
+   - name: 内置模块
+     desc: 
+     snippets:
+     - name: animation
+       displayName: animation
+       desc: 动画模块，支持内置组件上执行动画
+       code: |
+        const animation = weex.requireModule('animation');
+
+     - name: animation.transition 执行动画
+       display: false
+       code: |
+        var testEl = this.\$refs.test;
+        animation.transition(testEl, {
+          styles: {
+            backgroundColor: '#FF0000',
+            transform: 'translate(250px, 100px) scale(1.5)',
+            transformOrigin: 'center center'
+          },
+          duration: 800, //ms
+          timingFunction: 'ease',
+          delay: 0 //ms
+        }, function () {
+          
+        });
+
+     - name: clipboard
+       displayName: clipboard
+       desc: 系统的粘贴板获取内容或者设置内容
+       code: |
+        const clipboard = weex.requireModule('clipboard');
+
+     - name: clipboard.setString 设置剪贴板文本
+       display: false
+       code: |
+        clipboard.setString("hello");
+
+     - name: clipboard.getString 获取剪贴板文本
+       display: false
+       code: |
+        clipboard.getString(ret => {
+          //ret.data
+        });
+
+     - name: dom
+       displayName: dom
+       desc: 用于对 weex 页面里的组件节点进行一部分特定操作
+       code: |
+        const dom = weex.requireModule('dom');
+
+     - name: dom.scrollToElement 页面滚动到ref对应的组件
+       display: false
+       code: |
+        const el = this.\$refs.item;
+        dom.scrollToElement(el, {});
+
+     - name: dom.getComponentRect 获得ref布局信息
+       display: false
+       code: |
+        var el = this.\$refs.box;
+        const result = dom.getComponentRect(el, option => {
+          console.log('getComponentRect:', option)
+        });
+     
+     - name: globalEvent
+       displayName: globalEvent
+       desc: 全局监听持久性事件，例如androidback等
+       code: |
+        const globalEvent = weex.requireModule('globalEvent');
+
+     - name: globalEvent.addEventListener 监听事件
+       display: false
+       code: |
+        globalEvent.addEventListener("eventName", function (e) {
+          
+        });
+
+     - name: globalEvent.removeEventListener 移除监听事件
+       display: false
+       code: |
+        globalEvent.removeEventListener("eventName");
+
+     - name: picker
+       displayName: picker
+       desc: 用于数据选择，日期选择，时间选择
+       code: |
+        const picker = weex.requireModule('picker');
+
+     - name: picker.pickTime 选择时间
+       display: false
+       code: |
+        picker.pickTime({
+          value: this.value
+        }, event => {
+          if (event.result === 'success') {
+            this.value = event.data
+          }
+        });
+
+     - name: picker.pickDate 选择日期
+       display: false
+       code: |
+        picker.pickDate({
+          value: this.value
+        }, event => {
+          if (event.result === 'success') {
+            this.value = event.data
+          }
+        });
+
+     - name: picker.pick 调用单选
+       display: false
+       code: |
+        picker.pick({
+          title:"请选择",
+          items:["选项一","选项二"]
+        }, event => {
+          if (event.result === 'success') {
+            this.value = event.data
+          }
+        });
+
+     - name: storage
+       displayName: storage
+       desc: 持久化存储、修改、删除数据
+       code: |
+        const storage = weex.requireModule('storage');
+
+     - name: storage.setItem 存储数据
+       display: false
+       code: |
+        storage.setItem('name', 'Hanks', event => {
+
+        });
+
+     - name: storage.getItem 获取数据
+       display: false
+       code: |
+        storage.getItem('name', event => {
+         //event.data
+        });
+
+     - name: storage.removeItem 删除数据
+       display: false
+       code: |
+        storage.removeItem('name', event => {
+
+        });
+
+     - name: storage.getAllKeys 获取全部已存储项键名的数组
+       display: false
+       code: |
+        storage.getAllKeys(event => {
+          //event.data
+        });
+
+   - name: UI组件
+     lang: html
+     display: false
+     snippets:
+
+     - name: bui-button
+       display: false
+       code: |
+        <bui-button type="${1}" value="${2}"></bui-button>
+
+     - name: bui-icon
+       display: false
+       code: |
+        <bui-icon name="${1}" size="${2}"></bui-icon>
+
+     - name: bui-image
+       display: false
+       code: |
+        <bui-image width="${1}" height="${2}" src="${3}"></bui-image>
+    
+     - name: bui-tip
+       display: false
+       code: |
+        <bui-tip value="${1}"></bui-tip>
+
+     - name: bui-panel
+       display: false
+       code: |
+        <bui-panel title="${1}"><text>Panel Content</text></bui-panel>
+
+     - name: bui-header
+       display: false
+       code: |
+        <bui-header title="标题栏" :leftItem="${1}" :rightItem="${2}" 
+        @leftClick="${3}" @rightClick="${4}" @centerClick="${5}">
+        </bui-header>
+
+     - name: bui-searchbar-center
+       display: false
+       code: |
+        <bui-searchbar-center  placeholder="${1}" @search="${2}" ></bui-searchbar-center>
+
+     - name: bui-searchbar-left
+       display: false
+       code: |
+        <bui-searchbar-left  placeholder="${1}" @search="${2}" ></bui-searchbar-left>
+
+     - name: bui-list
+       display: false
+       code: |
+        <list class="bui-list">
+            <cell class="bui-cell" v-for="item in ${1}">
+                  <div class="bui-list-main">
+                    ...
+                  </div>
+                  <div class="bui-list-right">
+                    ...
+                  </div>
+              </cell>
+        </list>
+
+     - name: bui-swipe-cell
+       display: false
+       code: |
+        <bui-swipe-cell @actionClick="${1}" :items="${2}" :title="${3}"></bui-swipe-cell>
+
+     - name: bui-tabbar
+       display: false
+       code: |
+        <bui-tabbar :tabItems="tabItems" showSelectedLine=true @change="onItemChange" v-model="currentTab"></bui-tabbar>
+        <slider class="slider" @change="onSliderChange" :index="currentTab">
+            <div class="slider-item">
+              <text class="h1">tab0</text>
+            </div>
+            <div class="slider-item">
+                <text class="h1">tab1</text>
+            </div>
+            <div class="slider-item">
+                <text class="h1">tab2</text>
+            </div>
+            <div class="slider-item">
+                <text class="h1">tab3</text>
+            </div>
+        </slider>
+
+     - name: bui-cell
+       display: false
+       code: |
+        <bui-cell title="${1}" label="${2}" desc="${3}"></bui-cell>
+
+     - name: bui-radio
+       display: false
+       code: |
+        <bui-radio  :items="${1}" direction="horizontal" @change="${2}"  v-model="${3}"></bui-radio>
+
+     - name: bui-radio-list
+       display: false
+       code: |
+        <bui-radio-list  :items="${1}" direction="horizontal" @change="${2}"  v-model="${3}"></bui-radio-list>
+
+     - name: bui-checkbox
+       display: false
+       code: |
+        <bui-checkbox v-model="${1}" @change="${2}"  direction="vertical" :items="${3}"></bui-checkbox>
+
+     - name: bui-checkbox-list
+       display: false
+       code: |
+        <bui-checkbox-list v-model="${1}" @change="${2}"  direction="vertical" :items="${3}"></bui-checkbox-list>
+
+     - name: bui-dropdown
+       display: false
+       code: |
+        <bui-dropdown v-model="${1}" ref="dropdown" :center=true :up=true>
+            <bui-cell title="娱乐新闻"></bui-cell>
+            <bui-cell title="体育新闻"></bui-cell>
+            <bui-cell title="社交媒体"></bui-cell>
+        </bui-dropdown>
+
+     - name: bui-actionsheet
+       display: false
+       code: |
+        <bui-actionsheet
+                :items="${1}"
+                v-model="${2}"
+                @itemClick="${3}"
+                @btnClick="${4}"></bui-actionsheet>
+
+     - name: bui-dialog
+       display: false
+       code: |
+        <bui-dialog v-model="${1}" @btnClick="${2}">
+            <text>欢迎使用BUI-Weex!${3}</text>
+        </bui-dialog>
+
+     - name: bui-lazy-render
+       display: false
+       code: |
+        <bui-lazy-render time=1000>
+            ${1}
+        </bui-lazy-render>
+        
+     - name: bui-image-slider
+       display: false
+       code: |
+        <bui-image-slider :items="${1}" 
+            @itemClick="${2}" 
+            @change="${3}">
+        </bui-image-slider>
+
+     - name: bui-richcell
+       display: false
+       code: |
+         <bui-richcell :content="${1}" @click="${2}"></bui-richcell>
+
+     - name: bui-grid-select
+       display: false
+       code: |
+        <bui-grid-select
+          :items="${1}"
+          :single=true
+          @overLimit="${2}"
+          @select="${3}">
+        </bui-grid-select>
+
+     - name: bui-flow
+       display: false
+       code: |
+        <bui-flow
+          :items="${1}"
+          :customStyles="${2}"
+          @click="${3}">
+        </bui-flow>
+
+     - name: bui-tip
+       display: false
+       code: |
+        <bui-tip value="${1}"></bui-tip>
