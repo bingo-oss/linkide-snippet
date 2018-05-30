@@ -1,0 +1,31 @@
+ - name: BT_APP
+   ver: '1.4.x'
+   scope: BT_APP
+   lang: javascript
+   groups:
+
+   - name: 全局函数
+     desc: 
+     snippets:
+
+     - name: bui.alert
+       displayName: bui.alert
+       desc: 弹出提示信息
+       code: |
+        bui.alert("提醒");
+
+   - name: UI组件
+     lang: html
+     display: false
+     snippets:
+
+     - name: header
+       display: false
+       code: |
+        <header class="bui-bar">
+            <div class="bui-bar-left">${1}</div>
+            <div class="bui-bar-main">${2}</div>
+            <div class="bui-bar-right">${3}</div>
+        </header>
+
+     
