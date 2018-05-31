@@ -784,49 +784,6 @@
             scroll: true
         })
 
-     - name: bui-slide-tab-foot
-       displayName:  选项卡在底部
-       display: false
-       desc: 
-       code: |
-        //按钮在tab外层,需要传id
-        var tab = bui.slide({
-            id:"#tabFoot",
-            menu:"#tabFootNav",
-            children:".bui-tab-main > ul",
-            scroll: true
-        })
-
-     - name: bui-slide-tab-head
-       displayName:  选项卡在头部
-       display: false
-       desc: 
-       code: |
-        //按钮在tab外层,需要传id
-        var tab = bui.slide({
-            id:"#tabHead",
-            menu:"#tabHeadNav",
-            children:".bui-tab-main > ul",
-            scroll: true
-        })
-
-     - name: bui-slide-tab-side
-       displayName:  选项卡在侧边
-       display: false
-       desc: 
-       code: |
-        var tabWidth = $(window).width() - $("#tabNav").width();
-        //按钮在tab外层,需要传id
-        var tab = bui.slide({
-            id:"#tabSide",
-            menu:"#tabSideNav",
-            children:".bui-tab-main > ul",
-            width: tabWidth,
-            scroll: true,
-            animate: false,
-            delay: true
-        })
-
      - name: bui-slide-tab-demo
        displayName:   选项示例
        display: true
