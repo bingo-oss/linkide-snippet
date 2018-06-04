@@ -785,7 +785,7 @@
         })
 
      - name: bui-slide-tab-demo
-       displayName:   选项示例
+       displayName:   选项卡-示例
        display: true
        desc: 
        code: |
@@ -796,15 +796,92 @@
             children:".bui-tab-main > ul",
             scroll: true
         })
+
         // 选项卡 html 对应的结构:
         <div id="uiTab" class="bui-tab">
-          <!-- 按钮较少时,这里是平分宽度 -->
           <div class="bui-tab-head">
             <ul class="bui-nav">
-              <li class="bui-btn active">首页</li>
-              <li class="bui-btn ">新闻</li>
+              <li class="bui-btn active">Tab1</li>
+              <li class="bui-btn ">Tab2</li>
             </ul>
           </div>
+          <div class="bui-tab-main">
+            <ul>
+              <li>
+                Tab1内容
+              </li>
+              <li>
+                Tab2内容
+              </li>
+            </ul>
+          </div>
+        </div>
+
+     - name: bui-slide-tab-pic-demo
+       displayName:   多焦点图-示例
+       display: true
+       desc: 
+       code: |
+        // 焦点多图 js 初始化:
+        var uiSlidePic = bui.slide({
+            id:"#uiSlidePic",
+            height:120
+        })
+                        
+        // 焦点多图 html 对应的结构:
+        <div id="uiSlidePic" class="bui-slide">
+          <div class="bui-slide-main">
+            <ul>
+              <!-- 有多少个li则有多少个滑动 -->
+              <li>
+                <div class="bui-box-space">
+                    <div class="span1">
+                        <div style="background: yellow;height: 120px;"></div>
+                    </div>
+                    <div class="span1">
+                        <div style="background: orange;height: 120px;"></div>
+                    </div>
+                    <div class="span1">
+                        <div style="background: red;height: 120px;"></div>
+                    </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="bui-slide-head">
+            <ul>
+              <li>1</li>
+            </ul>
+          </div>
+        </div>  
+
+     - name: bui-slide-tab-scroll-demo
+       displayName:   选项卡菜单滚动-示例
+       display: true
+       desc: 
+       code: |
+        // 选项卡 js 初始化:
+        var tabScroll = bui.slide({
+            id:"#tabScroll",
+            menu:"#nav",
+            children:".bui-tab-main > ul",
+            scroll: true
+        })    
+
+        // 让顶部导航滚动到可视位置
+        tabScroll.on("to",function (index) {
+
+            var left = $("#nav li")[index].offsetLeft;
+            document.getElementById("uiSlideNavbar").scrollLeft = left;
+        })
+
+        // 选项卡 html 对应的结构:
+        <div id="uiSlideNavbar" class="bui-navbar">
+          <ul id="nav" class="bui-nav">
+            <li class="bui-btn active">Tab1</li><li class="bui-btn ">Tab2</li><li class="bui-btn">Tab3</li><li class="bui-btn ">Tab4</li><li class="bui-btn">Tab5</li><li class="bui-btn ">Tab6</li><li class="bui-btn">Tab7</li><li class="bui-btn ">Tab8</li>
+          </ul>
+        </div>
+        <div id="tabScroll" class="bui-tab">
           <div class="bui-tab-main">
             <ul>
               <li>
@@ -823,38 +900,38 @@
        desc: 
        code: |
         //按钮在tab外层,需要传id
-        var tab = bui.slide({
-            id:"#tabHead",
-            menu:"#tabHeadNav",
-            children:".bui-tab-main > ul",
-            scroll: true
+        var tabHead = bui.slide({
+           id:"#tabHead",
+           menu:"#tabHeadNav",
+           children:".bui-tab-main > ul",
+           scroll: true
         })
         <!-- 替换对应的main标签内容及header标签内容 -->
         <header class="bui-bar">
-            <div class="bui-bar-left">
-                <a class="bui-btn"><i class="icon-back"></i></a>
-            </div>
-            <div class="bui-bar-main">
-                <ul id="tabHeadNav" class="bui-nav" style="width: 60%;">
-                    <li class="bui-btn active">首页</li>
-                    <li class="bui-btn ">新闻</li>
-                </ul>
-            </div>
-            <div class="bui-bar-right"></div>
+           <div class="bui-bar-left">
+               <a class="bui-btn"><i class="icon-back"></i></a>
+           </div>
+           <div class="bui-bar-main">
+               <ul id="tabHeadNav" class="bui-nav" style="width: 60%;">
+                   <li class="bui-btn active">Tab1</li>
+                   <li class="bui-btn ">Tab2</li>
+               </ul>
+           </div>
+           <div class="bui-bar-right"></div>
         </header>
         <main>
-            <div id="tabHead" class="bui-tab">
-              <div class="bui-tab-main">
-                <ul>
-                  <li>
-                    滑动的内容
-                  </li>
-                  <li>
-                    滑动的内容
-                  </li>
-                </ul>
-              </div>
-            </div>
+           <div id="tabHead" class="bui-tab">
+             <div class="bui-tab-main">
+               <ul>
+                 <li>
+                   Tab1内容
+                 </li>
+                 <li>
+                   Tab2内容
+                 </li>
+               </ul>
+             </div>
+           </div>
         </main>
 
      - name: bui-slide-tab-foot-demo
@@ -863,39 +940,33 @@
        desc: 
        code: |
         //按钮在tab外层,需要传id
-        var tab = bui.slide({
-            id:"#tabFoot",
-            menu:"#tabFootNav",
-            children:".bui-tab-main > ul",
-            scroll: true
+        var tabFoot = bui.slide({
+           id:"#tabFoot",
+           menu:"#tabFootNav",
+           children:".bui-tab-main > ul",
+           scroll: true
         })
-        <!-- 替换对应的main标签内容及header标签内容 -->
-        <header class="bui-bar">
-            <div class="bui-bar-left">
-                <a class="bui-btn"><i class="icon-back"></i></a>
-            </div>
-            <div class="bui-bar-main">
-                <ul id="tabHeadNav" class="bui-nav" style="width: 60%;">
-                    <li class="bui-btn active">首页</li>
-                    <li class="bui-btn ">新闻</li>
-                </ul>
-            </div>
-            <div class="bui-bar-right"></div>
-        </header>
+        <!-- 替换对应的main标签内容及footer标签内容 -->
         <main>
-            <div id="tabHead" class="bui-tab">
-              <div class="bui-tab-main">
-                <ul>
-                  <li>
-                    滑动的内容
-                  </li>
-                  <li>
-                    滑动的内容
-                  </li>
-                </ul>
-              </div>
-            </div>
+           <div id="tabFoot" class="bui-tab">
+             <div class="bui-tab-main">
+               <ul>
+                 <li>
+                   Tab1内容
+                 </li>
+                 <li>
+                   Tab2内容
+                 </li>
+               </ul>
+             </div>
+           </div>
         </main>
+        <footer>
+            <ul id="tabFootNav" class="bui-nav">
+                <li class="bui-btn bui-box-vertical active"><i class="icon-home"><span class="bui-badges">15</span></i><div class="span1">Tab1</div></li>
+                <li class="bui-btn bui-box-vertical"><i class="icon-share"></i><div class="span1">Tab2</div></li>
+            </ul>
+        </footer>
 
      - name: bui-slide-tab-side-demo
        displayName:   选项在边栏示例
@@ -903,43 +974,43 @@
        desc: 
        code: |
         var tabWidth = $(window).width() - $("#tabNav").width();
-            //按钮在tab外层,需要传id
-            var tab = bui.slide({
-                id:"#tabSide",
-                menu:"#tabSideNav",
-                children:".bui-tab-main > ul",
-                width: tabWidth,
-                scroll: true,
-                animate: false,
-                delay: true
-            })
-        <!-- 替换对应的main标签内容及header标签内容 -->
-        <header class="bui-bar">
-            <div class="bui-bar-left">
-                <a class="bui-btn"><i class="icon-back"></i></a>
-            </div>
-            <div class="bui-bar-main">
-                <ul id="tabHeadNav" class="bui-nav" style="width: 60%;">
-                    <li class="bui-btn active">首页</li>
-                    <li class="bui-btn ">新闻</li>
-                </ul>
-            </div>
-            <div class="bui-bar-right"></div>
-        </header>
-        <main>
-            <div id="tabHead" class="bui-tab">
-              <div class="bui-tab-main">
-                <ul>
-                  <li>
-                    滑动的内容
-                  </li>
-                  <li>
-                    滑动的内容
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </main>
+        //按钮在tab外层,需要传id
+        var tabSide = bui.slide({
+            id:"#tabSide",
+            menu:"#tabSideNav",
+            children:".bui-tab-main > ul",
+            width: tabWidth,
+            scroll: true,
+            animate: false,
+            delay: true
+        })
+        // html 结构
+        <style>
+          #tabSideNav {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: #fff;
+            z-index: 10;
+            width:2rem;
+          }
+          #tabSide {
+            margin-left: 2rem;
+          }
+        </style>
+        <ul id="tabSideNav" class="bui-list">
+          <li class="bui-btn active">Tab1</li>
+          <li class="bui-btn ">Tab2</li>
+        </ul>
+        <div id="tabSide" class="bui-tab">
+          <div class="bui-tab-main">
+            <ul>
+              <li>Tab1内容</li>
+              <li>Tab2内容</li>
+            </ul>
+          </div>
+        </div>
 
      - name: bui-stepbar
        displayName:  步骤条初始化
@@ -1886,97 +1957,6 @@
                           第1屏
                       </li>
                   </ul>
-              </div>
-          </div>
-
-      - name: ui-slide-tab-head
-        displayName:   选项卡在头部结构
-        code: |
-          <!-- 替换对应的main标签内容及header标签内容 -->
-          <header class="bui-bar">
-              <div class="bui-bar-left">
-                  <a class="bui-btn"><i class="icon-back"></i></a>
-              </div>
-              <div class="bui-bar-main">
-                  <ul id="tabHeadNav" class="bui-nav" style="width: 60%;">
-                      <li class="bui-btn active">首页</li>
-                      <li class="bui-btn ">新闻</li>
-                  </ul>
-              </div>
-              <div class="bui-bar-right"></div>
-          </header>
-          <main>
-              <div id="tabHead" class="bui-tab">
-                <div class="bui-tab-main">
-                  <ul>
-                    <li>
-                      滑动的内容
-                    </li>
-                    <li>
-                      滑动的内容
-                    </li>
-                  </ul>
-                </div>
-              </div>
-          </main>
-
-      - name: ui-slide-tab-foot
-        displayName:   选项卡在底部结构
-        code: |
-          <!-- 替换对应的main标签内容及footer标签内容 -->
-          <main>
-              <div id="tabFoot" class="bui-tab">
-                <div class="bui-tab-main">
-                  <ul>
-                    <li>
-                      滑动的内容
-                    </li>
-                    <li>
-                      滑动的内容
-                    </li>
-                  </ul>
-                </div>
-              </div>
-          </main>
-          <footer>
-              <ul id="tabFootNav" class="bui-nav">
-                  <li class="bui-btn bui-box-vertical active"><i class="icon-home"><span class="bui-badges">15</span></i><div class="span1">首页</div></li>
-                  <li class="bui-btn bui-box-vertical"><i class="icon-share"></i><div class="span1">新闻</div></li>
-              </ul>
-          </footer>
-
-      - name: ui-slide-tab-side
-        displayName:   选项卡在侧边结构
-        code: |
-          <style>
-              #tabSideNav {
-                  position: absolute;
-                  left: 0;
-                  top: 0;
-                  bottom: 0;
-                  background: #fff;
-                  z-index: 10;
-                  width:2rem;
-              }
-              #tabSide {
-                  margin-left: 2rem;
-              }
-          </style>
-          <ul id="tabSideNav" class="bui-list">
-              <li class="bui-btn active">Tab1</li>
-              <li class="bui-btn ">Tab2</li>
-          </ul>
-          <div id="tabSide" class="bui-tab">
-              <div class="bui-tab-main">
-                  <ul>
-                      <li>
-                          第1个tab
-                      </li>
-                      <li>
-                          第2个tab
-                      </li>
-                  </ul>
-
               </div>
           </div>
 
